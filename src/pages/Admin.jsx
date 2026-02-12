@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Admin.css';
 
 const API_URL = "https://proflashapi.onrender.com/api/Quotes";
-const DOGRU_SIFRE = "1234";
+const DOGRU_SIFRE = "Faruk.2005";
 
 const Admin = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("proflash_login") === "true");
