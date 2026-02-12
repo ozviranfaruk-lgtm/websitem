@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import Admin from './pages/Admin';
 // Sayfaları Çağırıyoruz
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -20,6 +20,7 @@ function App() {
         <Route path="/hizmetler" element={<Services />} />
         <Route path="/iletisim" element={<Contact />} />
         <Route path="/teklif-al" element={<Contact />} /> {/* Teklif Al butonu da iletişime gitsin */}
+        <Route path="/ozviran-panel" element={<Admin />} />
       </Routes>
 
       {/* Alt Footer Her Sayfada Görünsün */}
