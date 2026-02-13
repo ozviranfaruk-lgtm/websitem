@@ -95,11 +95,12 @@ export default function Admin() {
     "Zonguldak": ["Alaplı", "Çaycuma", "Devrek", "Ereğli", "Gökçebey", "Kilimli", "Kozlu", "Merkez"]
   };
 
-  // Form Verileri (moveDate eklendi)
+  // Form Verileri (moveDate ve İKİ AYRI KAT bilgisi eklendi)
   const [formData, setFormData] = useState({
     id: "", fullName: "", phoneNumber: "", fromCity: "", fromDistrict: "",
     fromNeighborhood: "", toCity: "", toDistrict: "", toNeighborhood: "",
-    floorInfo: "", description: "", moveDate: "" 
+    floorInfo: "", description: "", moveDate: "", 
+    fromFloor: "", toFloor: "" // YENİ: İki ayrı kat bilgisi
   });
 
   useEffect(() => {
@@ -153,17 +154,21 @@ export default function Admin() {
     const method = formData.id ? "PUT" : "POST";
     const url = formData.id ? `${API_URL}/${formData.id}` : API_URL;
     
-    // TARİH HACK: Backend desteklemediği için tarihi Açıklama (description) içine ekliyoruz.
-    // Örnek format: "📅 2026-02-14 || 2+1 Eşya"
+    // TARİH ve KAT HACK: Backend desteklemediği için tek alana birleştiriyoruz.
     let apiDescription = formData.description;
     if (formData.moveDate) {
         apiDescription = `📅 ${formData.moveDate} || ${formData.description}`;
     }
 
+    // İki kat bilgisini TEK bir alanda birleştiriyoruz (Backend anlaması için)
+    // Örnek: "Yükleme: 3. Kat || Boşaltma: 5. Kat"
+    const combinedFloorInfo = `Yükleme: ${formData.fromFloor || '-'} || Boşaltma: ${formData.toFloor || '-'}`;
+
     const gonderilecekVeri = { 
         ...formData, 
         id: formData.id ? parseInt(formData.id) : 0,
-        description: apiDescription
+        description: apiDescription,
+        floorInfo: combinedFloorInfo // Birleştirilmiş kat bilgisi gidiyor
     };
 
     try {
@@ -204,6 +209,19 @@ export default function Admin() {
         }
     }
 
+    // Kat bilgisini geri ayrıştırıyoruz
+    let rawFloor = item.floorInfo || "";
+    let fFloor = "";
+    let tFloor = "";
+    
+    if (rawFloor.includes(" || ")) {
+        const parts = rawFloor.split(" || ");
+        fFloor = parts[0].replace("Yükleme: ", "");
+        tFloor = parts[1].replace("Boşaltma: ", "");
+    } else {
+        fFloor = rawFloor; // Eski kayıtlar bozulmasın diye
+    }
+
     setFormData({
       id: item.id,
       fullName: item.fullName || "",
@@ -214,9 +232,10 @@ export default function Admin() {
       toCity: item.toCity || "",
       toDistrict: item.toDistrict || "",
       toNeighborhood: item.toNeighborhood || "",
-      floorInfo: item.floorInfo || "",
-      description: textPart, // Sadece metin kısmı
-      moveDate: datePart // Tarih kısmı
+      description: textPart, 
+      moveDate: datePart,
+      fromFloor: fFloor,
+      toFloor: tFloor
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -225,7 +244,7 @@ export default function Admin() {
     setFormData({
       id: "", fullName: "", phoneNumber: "", fromCity: "", fromDistrict: "",
       fromNeighborhood: "", toCity: "", toDistrict: "", toNeighborhood: "",
-      floorInfo: "", description: "", moveDate: ""
+      floorInfo: "", description: "", moveDate: "", fromFloor: "", toFloor: ""
     });
   };
 
@@ -360,16 +379,19 @@ export default function Admin() {
 
                 <div className="section-header"><i className="fa-solid fa-box-open"></i> Eşya, Tarih & Detaylar</div>
                 <div className="row">
-                    {/* YENİ EKLENEN TARİH KUTUSU */}
                     <div className="col">
                         <label style={{color: 'var(--kirmizi)'}}>Taşınma Tarihi</label>
                         <input type="date" name="moveDate" value={formData.moveDate} onChange={handleChange} />
                     </div>
                     <div className="col"><label>Eşya Tipi</label><input type="text" name="description" value={formData.description} onChange={handleChange} placeholder="Eşya Tipi (Örn: 2+1)" /></div>
                 </div>
+                
+                {/* YENİ EKLENEN 2 AYRI KAT KUTUSU */}
                 <div className="row">
-                    <div className="col"><label>Kat (Asansör)</label><input type="text" name="floorInfo" value={formData.floorInfo} onChange={handleChange} placeholder="Kat Durumu (Örn: 3. Kat)" /></div>
+                    <div className="col"><label>Yükleme Katı</label><input type="text" name="fromFloor" value={formData.fromFloor} onChange={handleChange} placeholder="Kaçıncı Kat? (Örn: 3)" /></div>
+                    <div className="col"><label>Boşaltma Katı</label><input type="text" name="toFloor" value={formData.toFloor} onChange={handleChange} placeholder="Kaçıncı Kat? (Örn: 5)" /></div>
                 </div>
+
                 <div className="row">
                     <div className="col"><input type="text" name="fromNeighborhood" value={formData.fromNeighborhood} onChange={handleChange} placeholder="Nereden (Mahalle)" /></div>
                     <div className="col"><input type="text" name="toNeighborhood" value={formData.toNeighborhood} onChange={handleChange} placeholder="Nereye (Mahalle)" /></div>
@@ -387,7 +409,7 @@ export default function Admin() {
                 
                 <ul>
                     {quotes.map(item => {
-                        // LİSTEDE GÖSTERİRKEN TARİHİ AYIKLAMA İŞLEMİ
+                        // LİSTEDE GÖSTERİRKEN TARİH VE KATLARI AYIKLAMA
                         let displayDate = "";
                         let displayDesc = item.description || "";
                         if (displayDesc.includes(" || ") && displayDesc.startsWith("📅 ")) {
@@ -395,7 +417,6 @@ export default function Admin() {
                              displayDate = parts[0].replace("📅 ", "");
                              displayDesc = parts[1];
                         }
-
                         return (
                         <li key={item.id}>
                             <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start'}}>
