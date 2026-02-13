@@ -2,100 +2,134 @@ import React from 'react';
 import Hero from '../components/Hero'; 
 
 function Home() {
+  // SENİN NUMARAN - SİSTEME İŞLENDİ
+  const telNo = "05522820686"; 
+  const telGosterim = "0552 282 06 86";
+
   return (
     <div>
+      {/* 📞 REKLAM CANAVARI: SABİT ÜST BAND */}
+      <div style={{
+        background: '#d90429',
+        color: 'white',
+        padding: '10px 0',
+        textAlign: 'center',
+        position: 'sticky',
+        top: '0',
+        zIndex: '2000',
+        boxShadow: '0 5px 15px rgba(217, 4, 41, 0.4)',
+        borderBottom: '3px solid #ffb703'
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          <span style={{ fontWeight: 'bold', fontSize: '1rem' }}>Ankara & Antalya Nakliye Hattı:</span>
+          <a href={`tel:${telNo}`} style={{
+            background: '#ffffff',
+            color: '#d90429',
+            padding: '8px 20px',
+            borderRadius: '50px',
+            textDecoration: 'none',
+            fontSize: '1.2rem',
+            fontWeight: '900',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            animation: 'pulse 1.5s infinite' 
+          }}>
+            <i className="fa-solid fa-phone-flip"></i> {telGosterim}
+          </a>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
+
       <Hero />
 
-      {/* ANA BÖLÜM: ANKARA & ANTALYA ODAKLI */}
+      {/* 🚀 SEO VE İKNA BÖLÜMÜ */}
       <div style={{ padding: '60px 20px', textAlign: 'center', background: 'white' }}>
-        <h1 style={{ color: '#0a1a2f', fontSize: '2.2rem', marginBottom: '10px' }}>
-          ANKARA - ANTALYA <span style={{ color: '#d90429' }}>EVDEN EVE NAKLİYAT</span>
+        <h1 style={{ color: '#0a1a2f', fontSize: '2.5rem', marginBottom: '10px', fontWeight: '900' }}>
+          ANKARA VE ANTALYA <span style={{ color: '#d90429' }}>EVDEN EVE NAKLİYAT</span>
         </h1>
-        <p style={{ color: '#ffb703', fontWeight: 'bold', fontSize: '1.2rem', marginTop: '0' }}>
-          Şehir İçi ve Şehirler Arası Güvenli Taşımacılık
+        <p style={{ color: '#ffb703', fontWeight: 'bold', fontSize: '1.3rem', marginTop: '0' }}>
+          Kurumsal, Sigortalı ve Asansörlü Çözümler
         </p>
-        <div style={{ width: '100px', height: '4px', background: '#ffb703', margin: '0 auto 30px auto' }}></div>
+        <div style={{ width: '80px', height: '5px', background: '#d90429', margin: '20px auto 40px auto' }}></div>
         
-        <p style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', color: '#444', lineHeight: '1.8' }}>
-          <strong>Proflash Nakliyat</strong> olarak, başta <strong>Ankara evden eve nakliyat</strong> ve 
-          <strong> Antalya evden eve nakliyat</strong> olmak üzere, Türkiye'nin 81 ilinde profesyonel çözümler sunuyoruz. 
-          Eşyalarınızı <strong>sigortalı, asansörlü ve ambalajlı</strong> sistemlerle, sanki kendi eşyamızmış gibi titizlikle taşıyoruz. 
-          Ankara ve Antalya arası günlük seferlerimizle en uygun fiyatlı ve en hızlı taşınma deneyimini yaşayın.
+        <p style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.2rem', color: '#444', lineHeight: '1.8' }}>
+          <strong>Proflash Nakliyat</strong> olarak, <strong>Ankara evden eve nakliyat</strong> ve 
+          <strong> Antalya nakliyat</strong> rotasında uzmanlaştık. Eşyalarınızı 
+          profesyonel paketleme sistemleriyle koruyor, 81 ile <strong>sigortalı nakliye</strong> hizmeti sunuyoruz. 
+          Ankara ve Antalya arası günlük seferlerimizle eşyalarınızı en güvenli şekilde teslim ediyoruz.
         </p>
 
-        {/* HİZMET DETAYLARI - GOOGLE BUNLARA BAYILIR */}
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          gap: '20px', 
-          marginTop: '40px', 
-          flexWrap: 'wrap' 
-        }}>
-          <div style={serviceBoxStyle}>
-            <i className="fa-solid fa-truck-ramp-box" style={iconStyle}></i>
-            <h4 style={{margin: '10px 0'}}>Asansörlü Nakliyat</h4>
-            <p style={{fontSize: '0.9rem', color: '#666'}}>Yüksek katlarda bile eşyalarınız çizilmeden taşınır.</p>
+        {/* HİZMET KARTLARI */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '50px', flexWrap: 'wrap' }}>
+          <div style={serviceCardStyle}>
+            <i className="fa-solid fa-truck-fast" style={iconStyle}></i>
+            <h4 style={serviceTitleStyle}>Hızlı Sevkiyat</h4>
+            <p style={serviceTextStyle}>Ankara - Antalya arası 24 saatte anahtar teslim taşıma.</p>
           </div>
-          <div style={serviceBoxStyle}>
-            <i className="fa-solid fa-shield-halved" style={iconStyle}></i>
-            <h4 style={{margin: '10px 0'}}>Sigortalı Taşıma</h4>
-            <p style={{fontSize: '0.9rem', color: '#666'}}>Tüm eşyalarınız nakliye sigortasıyla güvence altındadır.</p>
+          <div style={serviceCardStyle}>
+            <i className="fa-solid fa-house-chimney-window" style={iconStyle}></i>
+            <h4 style={serviceTitleStyle}>Asansörlü Sistem</h4>
+            <p style={serviceTextStyle}>Dar merdivenlere son! Balkondan güvenli asansörlü taşıma.</p>
           </div>
-          <div style={serviceBoxStyle}>
-            <i className="fa-solid fa-box-open" style={iconStyle}></i>
-            <h4 style={{margin: '10px 0'}}>Profesyonel Paketleme</h4>
-            <p style={{fontSize: '0.9rem', color: '#666'}}>Kırılacak her şey özel ambalaj malzemeleriyle korunur.</p>
-          </div>
-        </div>
-
-        {/* İSTATİSTİKLER */}
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          gap: '30px', 
-          marginTop: '60px', 
-          flexWrap: 'wrap' 
-        }}>
-          <div style={{ minWidth: '150px' }}>
-            <h3 style={{ fontSize: '2.5rem', color: '#d90429', margin: 0 }}>81</h3>
-            <span style={{ fontWeight: 'bold', color: '#0a1a2f' }}>İlde Aktif Hizmet</span>
-          </div>
-          <div style={{ minWidth: '150px' }}>
-            <h3 style={{ fontSize: '2.5rem', color: '#d90429', margin: 0 }}>1000+</h3>
-            <span style={{ fontWeight: 'bold', color: '#0a1a2f' }}>Başarılı Nakliye</span>
-          </div>
-          <div style={{ minWidth: '150px' }}>
-            <h3 style={{ fontSize: '2.5rem', color: '#d90429', margin: 0 }}>%100</h3>
-            <span style={{ fontWeight: 'bold', color: '#0a1a2f' }}>Müşteri Memnuniyeti</span>
+          <div style={serviceCardStyle}>
+            <i className="fa-solid fa-file-contract" style={iconStyle}></i>
+            <h4 style={serviceTitleStyle}>Kaskolu Nakliye</h4>
+            <p style={serviceTextStyle}>Tüm sürecimiz yasal sözleşme ve nakliye sigortası kapsamındadır.</p>
           </div>
         </div>
       </div>
 
-      {/* ALT BÖLÜM: NEDEN BİZ? */}
-      <div style={{ background: '#0a1a2f', color: 'white', padding: '50px 20px', textAlign: 'center' }}>
-        <h3>Ankara'dan Antalya'ya, Türkiye'nin Her Yerine!</h3>
-        <p style={{ maxWidth: '700px', margin: '20px auto', opacity: '0.8' }}>
-          Şehirler arası taşınmak stresli olabilir. Proflash Nakliyat, Ankara ve Antalya merkezli 
-          geniş araç filosuyla bu süreci sizin için kolaylaştırıyor. Ücretsiz ekspertiz için bize ulaşın!
+      {/* REKLAM SONU: BÜYÜK ARAMA BUTONU */}
+      <div style={{ 
+        background: '#0a1a2f', 
+        color: 'white', 
+        padding: '80px 20px', 
+        textAlign: 'center',
+        borderTop: '5px solid #ffb703'
+      }}>
+        <h2 style={{fontSize: '2.2rem', marginBottom: '20px'}}>Saniyeler İçinde Fiyat Alın!</h2>
+        <p style={{ maxWidth: '600px', margin: '0 auto 40px auto', fontSize: '1.1rem', opacity: '0.8' }}>
+          Ankara veya Antalya'da taşınacak eviniz mi var? Beklemeyin, uzmanımızla hemen görüşün.
         </p>
+        <a href={`tel:${telNo}`} style={{
+          display: 'inline-block',
+          background: '#ffb703',
+          color: '#0a1a2f',
+          padding: '20px 50px',
+          borderRadius: '15px',
+          fontSize: '1.5rem',
+          fontWeight: '900',
+          textDecoration: 'none',
+          boxShadow: '0 10px 25px rgba(255, 183, 3, 0.4)'
+        }}>
+          <i className="fa-solid fa-phone-volume"></i> {telGosterim}
+        </a>
+        <div style={{marginTop: '15px', color: '#ffb703', fontWeight: 'bold'}}>
+          <i className="fa-solid fa-clock"></i> 7/24 Kesintisiz Hizmet
+        </div>
       </div>
     </div>
   );
 }
 
-// Tasarım için küçük yardımcı stiller
-const serviceBoxStyle = {
-  background: '#f8f9fa',
-  padding: '20px',
-  borderRadius: '15px',
-  width: '250px',
-  borderBottom: '4px solid #ffb703',
-  boxShadow: '0 5px 15px rgba(0,0,0,0.05)'
+const serviceCardStyle = {
+  background: '#fff',
+  padding: '35px 25px',
+  borderRadius: '25px',
+  width: '280px',
+  boxShadow: '0 15px 35px rgba(0,0,0,0.05)',
+  borderBottom: '6px solid #d90429'
 };
-
-const iconStyle = {
-  fontSize: '2rem',
-  color: '#d90429'
-};
+const serviceTitleStyle = { margin: '15px 0', color: '#0a1a2f', fontSize: '1.2rem', fontWeight: 'bold' };
+const serviceTextStyle = { fontSize: '0.95rem', color: '#777', lineHeight: '1.6' };
+const iconStyle = { fontSize: '2.8rem', color: '#d90429' };
 
 export default Home;
