@@ -141,3 +141,13 @@ html, body {
   width: 100%;
   overflow-x: hidden !important;
 }
+/* SİHİRLİ DOKUNUŞ: Hiçbir şeyin dışarı taşmasına izin verme */
+body, #root, .App {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+* {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
