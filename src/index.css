@@ -10,157 +10,124 @@
   --white: #ffffff;
 }
 
+/* --- TEMEL AYARLAR (TAŞMAYI ÖNLEYEN KRİTİK KISIM) --- */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Padding ve border genişliği etkilemesin */
   margin: 0;
   padding: 0;
 }
 
-body {
+html, body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--light-gray);
   color: var(--dark-gray);
   line-height: 1.6;
-  overflow-x: hidden;
+  
+  /* SAGA KAYMAYI KESİN OLARAK ENGELLER */
+  overflow-x: hidden !important; 
+  width: 100%;
+  position: relative;
+  -webkit-overflow-scrolling: touch; /* Mobilde kaydırma pürüzsüz olsun */
 }
 
-/* --- NAVBAR (MENÜ) DÜZENİ - BURASI BOZUKTU, ŞİMDİ DÜZELDİ --- */
+/* --- NAVBAR DÜZENİ --- */
 .navbar {
   background: var(--white);
-  height: 80px;
+  min-height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.1rem;
-  position: sticky; /* Sayfa kayınca menü üstte sabit kalsın */
+  position: sticky;
   top: 0;
-  z-index: 999;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Altına gölge */
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .navbar-container {
   display: flex;
-  justify-content: space-between; /* Logo solda, linkler sağda */
+  justify-content: space-between;
   align-items: center;
-  height: 80px;
   max-width: 1200px;
   width: 100%;
-  padding: 0 24px;
+  padding: 0 20px;
+  flex-wrap: wrap; /* Sığmazsa alt satıra geçsin */
 }
 
-/* Logo Stili */
+/* Logo */
 .navbar-logo {
   color: var(--dark-blue);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 800;
   text-decoration: none;
-  cursor: pointer;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-/* Linklerin Dizilimi */
+/* Menü */
 .nav-menu {
   display: flex;
   list-style: none;
   align-items: center;
-  gap: 20px; /* Linkler birbirine yapışmasın */
+  gap: 15px;
 }
 
 .nav-links {
   color: var(--dark-gray);
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.95rem;
   transition: color 0.3s ease;
-}
-
-.nav-links:hover {
-  color: var(--primary-red);
 }
 
 /* Teklif Al Butonu */
 .nav-links-btn {
   background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-gold) 100%);
-  padding: 10px 24px;
+  padding: 8px 18px;
   color: var(--white);
   border-radius: 5px;
   text-decoration: none;
   font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap; /* Yazı alt satıra düşmesin */
 }
 
-/* --- BUTONLAR VE DİĞERLERİ --- */
-button {
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  border: none;
-}
-
-button[type="submit"] {
-    background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-gold) 100%);
-    color: var(--white);
-    /* HATALI SATIR BURASIYDI, DÜZELTİLDİ: */
-    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4); 
-}
-
-/* --- MOBİL UYUMLULUK --- */
+/* --- MOBİL UYUMLULUK (SİHİRLİ DOKUNUŞ) --- */
 @media screen and (max-width: 768px) {
+  .navbar-container {
+    justify-content: center; /* Mobilde her şeyi ortala */
+    padding: 10px;
+    gap: 10px;
+  }
+  
   .nav-menu {
-      display: none; /* Telefondaysak menüyü gizle (kalabalık yapmasın) */
+    gap: 10px;
+    justify-content: center;
+    width: 100%; /* Menü genişliği kaplasın */
+  }
+
+  .nav-links {
+    font-size: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem !important;
   }
 }
-.services-section {
-  padding: 80px 20px;
-  background-color: var(--white);
-  text-align: center;
-}
 
-.section-title {
-  font-size: 2.5rem;
-  color: var(--dark-blue);
-  margin-bottom: 10px;
-}
-
-.section-subtitle {
-  color: #666;
-  margin-bottom: 50px;
-}
-
+/* --- HİZMET KARTLARI --- */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Mobilde daha iyi sığar */
+  gap: 20px;
+  padding: 20px;
 }
 
 .service-card {
-  background: var(--light-gray);
-  padding: 40px 20px;
-  border-radius: 15px;
-  transition: all 0.3s ease;
-  border-bottom: 5px solid transparent;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
   background: var(--white);
-  border-bottom: 5px solid var(--primary-red);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
-.service-icon {
-  font-size: 4rem;
-  margin-bottom: 20px;
-}
-
-.service-card h3 {
-  color: var(--dark-gray);
-  margin-bottom: 15px;
-}
-
-.service-card p {
-  color: #555;
-  font-size: 0.95rem;
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  text-align: center;
 }
