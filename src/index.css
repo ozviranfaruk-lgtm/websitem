@@ -126,3 +126,19 @@ html, body {
   font-weight: 700;
   white-space: nowrap; /* Yazının bölünmesini engeller */
 }
+/* iPHONE ÖZEL: Otomatik yakınlaştırmayı ve taşmayı önler */
+input, select, textarea {
+  font-size: 16px !important; /* iPhone'un zoom yapmasını engelleyen sihirli rakam */
+}
+
+html, body {
+  -webkit-overflow-scrolling: touch; /* Kaydırmayı iPhone'da pürüzsüz yapar */
+  overflow-x: hidden !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+#root {
+  overflow-x: hidden !important;
+  width: 100% !important;
+}
