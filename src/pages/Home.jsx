@@ -20,72 +20,71 @@ function Home() {
 
       <Hero />
 
-      {/* 📸 İCRAAT GALERİSİ */}
+      {/* 📸 İCRAAT GALERİSİ (FOTOĞRAFLAR) */}
       <section style={{ padding: '60px 20px', maxWidth: '1300px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#0a1a2f' }}>
             PROFESYONEL <span style={{ color: '#d90429' }}>İŞ SÜREÇLERİMİZ</span>
           </h2>
-          <p style={{ fontSize: '1.2rem', color: '#666' }}>Eşyalarınızın nasıl taşındığını ve paketlendiğini canlı izleyin.</p>
+          <p style={{ fontSize: '1.2rem', color: '#666' }}>Paketlemeden asansör kurulumuna, işimizi titizlikle yapıyoruz.</p>
           <div style={{ width: '80px', height: '5px', background: '#ffb703', margin: '15px auto' }}></div>
         </div>
 
         <div style={gridStyle}>
           
-          {/* 1. SIRA: AMBALAJ VİDEOLARI */}
+          {/* FOTO 1: AMBALAJ */}
           <div style={mediaCardStyle}>
-            <video width="100%" controls muted loop style={mediaStyle}>
-              {/* Eski kırmızı ambalaj */}
-              <source src="/assets/galeri/video1.mp4" type="video/mp4" />
-            </video>
-            <div style={captionStyle}>Hassas Mobilya Ambalajı (Bordo)</div>
+            <img src="/assets/galeri/foto1.jpg" alt="Profesyonel Paketleme" style={mediaStyle} />
+            <div style={captionStyle}>Hassas Mobilya Ambalajı</div>
           </div>
 
+          {/* FOTO 2: İSTİF */}
           <div style={mediaCardStyle}>
-            <video width="100%" controls muted loop style={mediaStyle}>
-              {/* Eski mavi ambalaj */}
-              <source src="/assets/galeri/video2.mp4" type="video/mp4" />
-            </video>
-            <div style={captionStyle}>Tam Korumalı Eşya Hazırlığı (Mavi)</div>
+            <img src="/assets/galeri/foto2.jpg" alt="Kamyon İçi Düzen" style={mediaStyle} />
+            <div style={captionStyle}>Sarsılmaz İstifleme Düzeni</div>
           </div>
 
-          {/* 2. SIRA: FOTOĞRAFLAR (YATAK VE ASANSÖR) */}
+          {/* FOTO 3: ASANSÖR */}
           <div style={mediaCardStyle}>
-            {/* Eski kamyon arkası... */}
-            <img src="/assets/galeri/foto1.jpg" alt="Ambalajlı Yatak" style={mediaStyle} />
-            <div style={captionStyle}>Hijyenik Ambalaj Standartları</div>
+            <img src="/assets/galeri/foto3.jpg" alt="Dış Cephe Asansörü" style={mediaStyle} />
+            <div style={captionStyle}>Yüksek Katlara Asansörlü Çözüm</div>
           </div>
 
-           <div style={mediaCardStyle}>
-             {/* Eski kurmalı asansör... */}
-            <img src="/assets/galeri/foto2.jpg" alt="Kurmalı Asansör" style={mediaStyle} />
-            <div style={captionStyle}>Profesyonel Kurulum</div>
-          </div>
-
-          {/* 3. SIRA: ASANSÖR VİDEOLARI */}
+          {/* FOTO 4: TAŞIMA ANI */}
           <div style={mediaCardStyle}>
-            <video width="100%" controls muted loop style={mediaStyle}>
-              {/* Eski asansörlü taşıma */}
-              <source src="/assets/galeri/video3.mp4" type="video/mp4" />
-            </video>
-            <div style={captionStyle}>Dış Cephe Asansör Kurulumu</div>
-          </div>
-
-          <div style={mediaCardStyle}>
-            <video width="100%" controls muted loop style={mediaStyle}>
-              {/* Eski çaylı .mp4 */}
-              <source src="/assets/galeri/video4.mp4" type="video/mp4" />
-            </video>
-            <div style={captionStyle}>Güvenli Balkon Kurulumu & Keyif Çayı</div>
+            <img src="/assets/galeri/foto4.jpg" alt="Güvenli Taşıma" style={mediaStyle} />
+            <div style={captionStyle}>Hızlı ve Güvenli Nakliye</div>
           </div>
 
         </div>
       </section>
 
+      {/* 🚚 SEO AÇIKLAMALARI */}
+      <div style={{ padding: '80px 20px', maxWidth: '1200px', margin: '0 auto', background: '#f8f9fa', borderRadius: '20px' }}>
+        <div style={{ display: 'flex', gap: '50px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ flex: '1', minWidth: '300px' }}>
+            <h2 style={{ color: '#0a1a2f', marginBottom: '20px', fontSize: '2rem' }}>Neden Proflash Nakliyat?</h2>
+            <p style={{ lineHeight: '1.8', color: '#444', fontSize: '1.1rem' }}>
+              <strong>Ankara evden eve nakliyat</strong> sektöründe, eşyalarınızı kendi eşyamız gibi benimsiyoruz. 
+              Ambalaj kalitemizle hasarı sıfıra indirirken, asansörlü sistemimizle taşınma süresini kısaltıyoruz.
+              Şehir içi veya şehirler arası fark etmeksizin, <strong>sigortalı ve sözleşmeli</strong> taşımacılık hizmeti sunuyoruz.
+            </p>
+          </div>
+          <div style={whyUsBox}>
+            <ul style={listStyle}>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> Ücretsiz Ekspertiz</li>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> Asansörlü Taşıma</li>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> Sigortalı Nakliye</li>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> Uzman Marangoz</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       {/* 📞 ALT ÇAĞRI */}
       <div style={footerCallStyle}>
-        <h2 style={{ fontSize: '2.3rem', fontWeight: '800' }}>ÜCRETSİZ BİLGİ VE TEKLİF ALIN</h2>
-        <p style={{ margin: '20px 0 40px', fontSize: '1.1rem', opacity: '0.9' }}>Daha detaylı bilgi için bize bir telefon kadar yakınsınız.</p>
+        <h2 style={{ fontSize: '2.3rem', fontWeight: '800' }}>HEMEN FİYAT ALIN</h2>
+        <p style={{ margin: '20px 0 40px', fontSize: '1.1rem', opacity: '0.9' }}>Eşyalarınız için en uygun fiyat teklifini sunalım.</p>
         <a href={`tel:${telNo}`} style={bigCallBtn}>
           <i className="fa-solid fa-phone-volume"></i> {telGosterim}
         </a>
@@ -97,10 +96,13 @@ function Home() {
 // --- TASARIM STİLLERİ ---
 const topBarStyle = { background: '#0a1a2f', color: 'white', padding: '12px 0', textAlign: 'center', position: 'sticky', top: '0', zIndex: '2000', borderBottom: '3px solid #d90429' };
 const callButtonStyle = { background: '#d90429', color: 'white', padding: '8px 25px', borderRadius: '50px', textDecoration: 'none', fontSize: '1.1rem', fontWeight: '900' };
-const gridStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '25px' };
-const mediaCardStyle = { background: '#fff', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 12px 30px rgba(0,0,0,0.1)', borderBottom: '5px solid #ffb703' };
-const mediaStyle = { width: '100%', height: '300px', objectFit: 'cover', display: 'block' };
-const captionStyle = { padding: '18px', textAlign: 'center', fontWeight: 'bold', color: '#0a1a2f', fontSize: '1.1rem' };
+const gridStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px' };
+const mediaCardStyle = { background: '#fff', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 12px 30px rgba(0,0,0,0.1)', borderBottom: '5px solid #ffb703', transition: 'transform 0.3s' };
+const mediaStyle = { width: '100%', height: '250px', objectFit: 'cover', display: 'block' };
+const captionStyle = { padding: '15px', textAlign: 'center', fontWeight: 'bold', color: '#0a1a2f', fontSize: '1.1rem' };
+const whyUsBox = { flex: '1', minWidth: '300px', background: '#fff', padding: '30px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' };
+const listStyle = { listStyle: 'none', padding: 0, lineHeight: '3', fontSize: '1.1rem', fontWeight: '500' };
+const checkStyle = { color: '#ffb703', marginRight: '15px', fontSize: '1.2rem' };
 const footerCallStyle = { padding: '80px 20px', textAlign: 'center', background: '#0a1a2f', color: 'white', borderTop: '5px solid #ffb703' };
 const bigCallBtn = { display: 'inline-block', background: '#ffb703', color: '#0a1a2f', padding: '22px 50px', borderRadius: '15px', fontSize: '1.6rem', fontWeight: '900', textDecoration: 'none' };
 
