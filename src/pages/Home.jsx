@@ -6,117 +6,113 @@ function Home() {
   const telGosterim = "0552 282 06 86";
 
   return (
-    <div style={{ fontFamily: '"Segoe UI", Arial, sans-serif', backgroundColor: '#fff' }}>
+    <div style={{ fontFamily: '"Segoe UI", Arial, sans-serif', backgroundColor: '#fff', overflowX: 'hidden' }}>
       
-      {/* 📞 KURUMSAL ÜST BANT */}
-      <div style={{
-        background: '#0a1a2f',
-        color: 'white',
-        padding: '12px 0',
-        textAlign: 'center',
-        position: 'sticky',
-        top: '0',
-        zIndex: '2000',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-        borderBottom: '3px solid #d90429'
-      }}>
+      {/* 📞 ÜST BANT */}
+      <div style={topBarStyle}>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
           <span style={{ fontWeight: 'bold', color: '#ffb703' }}>7/24 Ankara Merkezli Tüm Türkiye Hattı:</span>
-          <a href={`tel:${telNo}`} style={{
-            background: '#d90429',
-            color: 'white',
-            padding: '6px 25px',
-            borderRadius: '50px',
-            textDecoration: 'none',
-            fontSize: '1.2rem',
-            fontWeight: '900',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            animation: 'pulse 1.5s infinite' 
-          }}>
+          <a href={`tel:${telNo}`} style={callButtonStyle}>
             <i className="fa-solid fa-phone-volume"></i> {telGosterim}
           </a>
         </div>
       </div>
 
-      <style>{`
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-      `}</style>
-
       <Hero />
 
-      {/* 📦 HİZMET DETAYLARI */}
-      <div style={{ padding: '80px 20px', textAlign: 'center', background: '#f8f9fa' }}>
-        <h2 style={{ color: '#0a1a2f', fontSize: '2.5rem', fontWeight: '900' }}>
-          PROFESYONEL <span style={{ color: '#d90429' }}>ÇÖZÜMLER</span>
-        </h2>
-        <div style={{ width: '80px', height: '5px', background: '#ffb703', margin: '20px auto 50px auto' }}></div>
-        
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap', maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={serviceBoxStyle}>
-            <i className="fa-solid fa-box-archive" style={iconStyle}></i>
-            <h3 style={serviceTitle}>Kusursuz Ambalaj</h3>
-            <p style={serviceText}>Mobilyalarınız ve hassas eşyalarınız darbe emici özel pıtptlar ile kat kat sarılarak taşınır.</p>
+      {/* 📦 GRUP 1: PROFESYONEL AMBALAJ & PAKETLEME */}
+      <section style={{ padding: '80px 20px', maxWidth: '1300px', margin: '0 auto' }}>
+        <div style={sectionTitleStyle}>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#0a1a2f' }}>
+            PROFESYONEL <span style={{ color: '#d90429' }}>AMBALAJ</span> & PAKETLEME
+          </h2>
+          <div style={dividerStyle}></div>
+          <p style={subTextStyle}>Eşyalarınızın yolculuğu, darbe emici özel pıt pıt malzemelerle başlar.</p>
+        </div>
+
+        <div style={gridStyle}>
+          {/* VİDEO 1: BORDO PAKETLEME */}
+          <div style={mediaCardStyle}>
+            <video width="100%" controls muted loop style={mediaStyle}>
+              <source src="/assets/ambalaj/video_bordo.mp4" type="video/mp4" />
+            </video>
+            <div style={captionStyle}>Hassas Mobilya Paketleme Sistemi</div>
           </div>
-          <div style={serviceBoxStyle}>
-            <i className="fa-solid fa-truck-pickup" style={iconStyle}></i>
-            <h3 style={serviceTitle}>Asansörlü Sistem</h3>
-            <p style={serviceText}>Eşyalarınız bina içi dar merdivenlerden değil, balkondan modüler asansörle güvenle indirilir.</p>
+
+          {/* VİDEO 2: MAVİ PAKETLEME ODA TURU */}
+          <div style={mediaCardStyle}>
+            <video width="100%" controls muted loop style={mediaStyle}>
+              <source src="/assets/ambalaj/video_mavi.mp4" type="video/mp4" />
+            </video>
+            <div style={captionStyle}>Tam Korumalı Eşya Hazırlığı</div>
           </div>
-          <div style={serviceBoxStyle}>
-            <i className="fa-solid fa-route" style={iconStyle}></i>
-            <h3 style={serviceTitle}>81 İl Nakliyat</h3>
-            <p style={serviceText}>Ankara merkezli olarak Türkiye'nin en ücra köşesine kadar anahtar teslim taşıma yapıyoruz.</p>
+
+          {/* FOTO 1: YATAK PAKETİ */}
+          <div style={mediaCardStyle}>
+            <img src="/assets/ambalaj/foto_yatak.jpg" alt="Ambalajlı Yatak" style={mediaStyle} />
+            <div style={captionStyle}>Hijyenik ve Güvenli Sarım</div>
+          </div>
+
+          {/* FOTO 2: KAMYON İÇİ YERLEŞİM */}
+          <div style={mediaCardStyle}>
+            <img src="/assets/ambalaj/foto_kamyon_ic.jpg" alt="Kamyon Düzeni" style={mediaStyle} />
+            <div style={captionStyle}>Sarsılmaz İstifleme Düzeni</div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* 🚚 KURUMSAL AÇIKLAMA (SEO) */}
-      <div style={{ padding: '80px 20px', maxWidth: '1100px', margin: '0 auto' }}>
+      {/* 🏗️ GRUP 2: ASANSÖRLÜ PROFESYONEL TAŞIMA */}
+      <section style={{ padding: '80px 20px', background: '#f8f9fa' }}>
+        <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+          <div style={sectionTitleStyle}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#0a1a2f' }}>
+              ASANSÖRLÜ <span style={{ color: '#d90429' }}>PROFESYONEL</span> TAŞIMA
+            </h2>
+            <div style={dividerStyle}></div>
+            <p style={subTextStyle}>Yüksek katlara sarsıntısız, hızlı ve hasarsız erişim sağlıyoruz.</p>
+          </div>
+
+          {/* ASANSÖR VİDEOLARI GELECEK */}
+          <div style={{...gridStyle, opacity: '0.6'}}>
+            <div style={mediaCardStyle}>
+               <div style={{...mediaStyle, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', background:'#eee', gap:'15px'}}>
+                  <i className="fa-solid fa-truck-loading" style={{fontSize:'4rem', color:'#ccc'}}></i>
+                  <span style={{color:'#999', fontWeight:'bold', fontSize:'1.2rem'}}>Asansör Videoları Yükleniyor...</span>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 🚚 SEO AÇIKLAMALARI VE NEDEN BİZ? */}
+      <div style={{ padding: '80px 20px', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ display: 'flex', gap: '50px', alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ flex: '1', minWidth: '300px' }}>
-            <h2 style={{ color: '#0a1a2f', marginBottom: '20px' }}>Güvenin Adresi: Proflash Nakliyat</h2>
+            <h2 style={{ color: '#0a1a2f', marginBottom: '20px', fontSize: '2rem' }}>Güvenin Adresi: Proflash Nakliyat</h2>
             <p style={{ lineHeight: '1.8', color: '#444', fontSize: '1.1rem' }}>
-              <strong>Ankara evden eve nakliyat</strong> arayışınızda Proflash olarak yanınızdayız. 
-              Deneyimli kadromuz, ambalajlama standartlarımız ve geniş araç filomuzla hizmet veriyoruz. 
-              Her taşıma işini kurumsal bir disiplinle ele alıyor, Ankara'dan tüm illerimize <strong>güvenli ve sözleşmeli</strong> taşımacılık yapıyoruz. 
-              Eşyanızın miktarı ne olursa olsun, bizde her zaman bir çözüm var.
+              <strong>Ankara evden eve nakliyat</strong> sektöründe öncü firmalardan biri olarak, eşyalarınızı kendi eşyamız gibi benimsiyoruz. 
+              Modern araç filomuz ve uzman kadromuzla, Ankara'dan Türkiye'nin her noktasına <strong>sözleşmeli ve güvenli</strong> hizmet sunuyoruz. 
+              Ambalaj kalitemizle hasarı sıfıra indirirken, asansörlü sistemimizle hızı artırıyoruz.
             </p>
           </div>
           <div style={whyUsBox}>
-            <h3 style={{ color: '#ffb703', marginBottom: '20px' }}>Neden Biz?</h3>
+            <h3 style={{ color: '#ffb703', marginBottom: '20px', fontSize: '1.5rem' }}>Neden Bizi Seçmelisiniz?</h3>
             <ul style={listStyle}>
               <li><i className="fa-solid fa-check" style={checkStyle}></i> Sabit Fiyat Garantisi</li>
-              <li><i className="fa-solid fa-check" style={checkStyle}></i> Profesyonel Marangoz Hizmeti</li>
-              <li><i className="fa-solid fa-check" style={checkStyle}></i> Ücretsiz Ekspertiz</li>
-              <li><i className="fa-solid fa-check" style={checkStyle}></i> Güvenli & Ambalajlı Taşıma</li>
-              <li><i className="fa-solid fa-check" style={checkStyle}></i> 7/24 Kesintisiz Destek</li>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> Profesyonel Paketleme Ekibi</li>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> Ücretsiz Ekspertiz Desteği</li>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> 81 İle Güvenli Taşımacılık</li>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> 7/24 Müşteri Destek Hattı</li>
             </ul>
           </div>
         </div>
       </div>
 
       {/* 📞 ALT ÇAĞRI */}
-      <div style={{ 
-        padding: '100px 20px', 
-        textAlign: 'center', 
-        background: '#0a1a2f',
-        color: 'white',
-        borderTop: '5px solid #ffb703'
-      }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: '800' }}>ÜCRETSİZ BİLGİ ALIN</h2>
-        <p style={{ margin: '20px 0 40px', fontSize: '1.2rem', opacity: '0.8' }}>Hemen arayın, eşyalarınız için en uygun fiyatı sunalım.</p>
-        <a href={`tel:${telNo}`} style={{
-          display: 'inline-block',
-          background: '#ffb703',
-          color: '#0a1a2f',
-          padding: '22px 60px',
-          borderRadius: '15px',
-          fontSize: '1.6rem',
-          fontWeight: '900',
-          textDecoration: 'none'
-        }}>
+      <div style={footerCallStyle}>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: '800' }}>ÜCRETSİZ BİLGİ VE TEKLİF</h2>
+        <p style={{ margin: '20px 0 40px', fontSize: '1.2rem', opacity: '0.9' }}>Hemen arayın, eşyalarınız için en avantajlı fiyatı hazırlayalım.</p>
+        <a href={`tel:${telNo}`} style={bigCallBtn}>
           <i className="fa-solid fa-phone-volume"></i> {telGosterim}
         </a>
       </div>
@@ -124,13 +120,20 @@ function Home() {
   );
 }
 
-// STİLLER
-const serviceBoxStyle = { background: 'white', padding: '40px 30px', borderRadius: '25px', width: '300px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', borderBottom: '6px solid #d90429' };
-const iconStyle = { fontSize: '3rem', color: '#ffb703', marginBottom: '20px' };
-const serviceTitle = { color: '#0a1a2f', marginBottom: '15px' };
-const serviceText = { color: '#666', fontSize: '0.95rem', lineHeight: '1.6' };
-const whyUsBox = { flex: '1', minWidth: '300px', background: '#0a1a2f', padding: '40px', borderRadius: '30px', color: 'white', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' };
-const listStyle = { listStyle: 'none', padding: 0, lineHeight: '2.5' };
-const checkStyle = { color: '#ffb703', marginRight: '10px' };
+// --- TASARIM STİLLERİ ---
+const topBarStyle = { background: '#0a1a2f', color: 'white', padding: '15px 0', textAlign: 'center', position: 'sticky', top: '0', zIndex: '2000', borderBottom: '3px solid #d90429' };
+const callButtonStyle = { background: '#d90429', color: 'white', padding: '8px 30px', borderRadius: '50px', textDecoration: 'none', fontSize: '1.2rem', fontWeight: '900', boxShadow: '0 4px 15px rgba(217, 4, 41, 0.3)' };
+const sectionTitleStyle = { textAlign: 'center', marginBottom: '50px' };
+const dividerStyle = { width: '80px', height: '5px', background: '#ffb703', margin: '20px auto' };
+const subTextStyle = { fontSize: '1.2rem', color: '#666' };
+const gridStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' };
+const mediaCardStyle = { background: '#fff', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 35px rgba(0,0,0,0.1)', borderBottom: '6px solid #d90429' };
+const mediaStyle = { width: '100%', height: '350px', objectFit: 'cover', display: 'block' };
+const captionStyle = { padding: '20px', textAlign: 'center', fontWeight: 'bold', color: '#0a1a2f', fontSize: '1.1rem' };
+const whyUsBox = { flex: '1', minWidth: '320px', background: '#0a1a2f', padding: '50px', borderRadius: '30px', color: 'white', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' };
+const listStyle = { listStyle: 'none', padding: 0, lineHeight: '3' };
+const checkStyle = { color: '#ffb703', marginRight: '15px', fontSize: '1.2rem' };
+const footerCallStyle = { padding: '100px 20px', textAlign: 'center', background: '#0a1a2f', color: 'white', borderTop: '5px solid #ffb703' };
+const bigCallBtn = { display: 'inline-block', background: '#ffb703', color: '#0a1a2f', padding: '25px 60px', borderRadius: '20px', fontSize: '1.8rem', fontWeight: '900', textDecoration: 'none', boxShadow: '0 10px 30px rgba(255, 183, 3, 0.3)' };
 
 export default Home;
