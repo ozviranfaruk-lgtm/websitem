@@ -10,7 +10,7 @@ export default function Admin() {
   const [hataMesaji, setHataMesaji] = useState(false);
   const [quotes, setQuotes] = useState([]);
   
-  // --- 81 İL VE TÜM İLÇELER (TAM LİSTE) ---
+  // --- 81 İL VE TÜM İLÇELER ---
   const turkeyData = {
     "Adana": ["Aladağ", "Ceyhan", "Çukurova", "Feke", "İmamoğlu", "Karaisalı", "Karataş", "Kozan", "Pozantı", "Saimbeyli", "Sarıçam", "Seyhan", "Tufanbeyli", "Yumurtalık", "Yüreğir"],
     "Adıyaman": ["Besni", "Çelikhan", "Gerger", "Gölbaşı", "Kahta", "Merkez", "Samsat", "Sincik", "Tut"],
@@ -48,7 +48,7 @@ export default function Admin() {
     "Giresun": ["Alucra", "Bulancak", "Çamoluk", "Çanakçı", "Dereli", "Doğankent", "Espiye", "Eynesil", "Görele", "Güce", "Keşap", "Merkez", "Piraziz", "Şebinkarahisar", "Tirebolu", "Yağlıdere"],
     "Gümüşhane": ["Kelkit", "Köse", "Kürtün", "Merkez", "Şiran", "Torul"],
     "Hakkari": ["Çukurca", "Derecik", "Merkez", "Şemdinli", "Yüksekova"],
-    "Hatay": ["Altınözü", "Antakya", "Arsuz", "Belen", "Defne", "Dörtyol", "Erzin", "Hassa", "İskenderun", "Kırıkhan", "Kumlu", "Payas", "Reyhanlı", "Samandağ", "Yayladağı"],
+    "Hatay": ["Altınözü", "Antakya", "Arsuz", "Belen", "Defne", "Dörtyol", "Erzin", "Hassa", "İskenderun", "Kırıkhan", "Kumlu", "Payas", "Reyhanlı", "Samandağ", "Yayladğı"],
     "Iğdır": ["Aralık", "Karakoyunlu", "Merkez", "Tuzluca"],
     "Isparta": ["Aksu", "Atabey", "Eğirdir", "Gelendost", "Gönen", "Keçiborlu", "Merkez", "Senirkent", "Sütçüler", "Şarkikaraağaç", "Uluborlu", "Yalvaç", "Yenişarbademli"],
     "İstanbul": ["Adalar", "Arnavutköy", "Ataşehir", "Avcılar", "Bağcılar", "Bahçelievler", "Bakırköy", "Başakşehir", "Bayrampaşa", "Beşiktaş", "Beykoz", "Beylikdüzü", "Beyoğlu", "Büyükçekmece", "Çatalca", "Çekmeköy", "Esenler", "Esenyurt", "Eyüpsultan", "Fatih", "Gaziosmanpaşa", "Güngören", "Kadıköy", "Kağıthane", "Kartal", "Küçükçekmece", "Maltepe", "Pendik", "Sancaktepe", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli", "Tuzla", "Ümraniye", "Üsküdar", "Zeytinburnu"],
@@ -95,12 +95,13 @@ export default function Admin() {
     "Zonguldak": ["Alaplı", "Çaycuma", "Devrek", "Ereğli", "Gökçebey", "Kilimli", "Kozlu", "Merkez"]
   };
 
-  // Form Verileri (moveDate ve İKİ AYRI KAT bilgisi eklendi)
+  // Form Verileri (FİYAT ALANI EKLENDİ)
   const [formData, setFormData] = useState({
     id: "", fullName: "", phoneNumber: "", fromCity: "", fromDistrict: "",
     fromNeighborhood: "", toCity: "", toDistrict: "", toNeighborhood: "",
     floorInfo: "", description: "", moveDate: "", 
-    fromFloor: "", toFloor: "" // YENİ: İki ayrı kat bilgisi
+    fromFloor: "", toFloor: "",
+    price: "" // YENİ: Fiyat alanı
   });
 
   useEffect(() => {
@@ -156,19 +157,23 @@ export default function Admin() {
     
     // TARİH ve KAT HACK: Backend desteklemediği için tek alana birleştiriyoruz.
     let apiDescription = formData.description;
+    
+    // Fiyatı description sonuna ekliyoruz ki döküm kalsın
+    const priceTag = formData.price ? ` [FİYAT: ${formData.price} TL]` : "";
+    
     if (formData.moveDate) {
-        apiDescription = `📅 ${formData.moveDate} || ${formData.description}`;
+        apiDescription = `📅 ${formData.moveDate} || ${formData.description}${priceTag}`;
+    } else {
+        apiDescription = `${formData.description}${priceTag}`;
     }
 
-    // İki kat bilgisini TEK bir alanda birleştiriyoruz (Backend anlaması için)
-    // Örnek: "Yükleme: 3. Kat || Boşaltma: 5. Kat"
     const combinedFloorInfo = `Yükleme: ${formData.fromFloor || '-'} || Boşaltma: ${formData.toFloor || '-'}`;
 
     const gonderilecekVeri = { 
         ...formData, 
         id: formData.id ? parseInt(formData.id) : 0,
         description: apiDescription,
-        floorInfo: combinedFloorInfo // Birleştirilmiş kat bilgisi gidiyor
+        floorInfo: combinedFloorInfo
     };
 
     try {
@@ -196,20 +201,27 @@ export default function Admin() {
   };
 
   const duzenleModunuAc = (item) => {
-    // Description içindeki gizli tarihi geri çıkartıyoruz
     let rawDesc = item.description || "";
     let datePart = "";
+    let pricePart = "";
     let textPart = rawDesc;
 
-    if (rawDesc.includes(" || ")) {
-        const parts = rawDesc.split(" || ");
+    // Fiyatı ayıkla [FİYAT: 15000 TL]
+    if (rawDesc.includes("[FİYAT: ")) {
+        const parts = rawDesc.split("[FİYAT: ");
+        pricePart = parts[1].replace(" TL]", "");
+        textPart = parts[0];
+    }
+
+    // Tarihi ayıkla
+    if (textPart.includes(" || ")) {
+        const parts = textPart.split(" || ");
         if (parts[0].startsWith("📅 ")) {
             datePart = parts[0].replace("📅 ", "");
             textPart = parts[1];
         }
     }
 
-    // Kat bilgisini geri ayrıştırıyoruz
     let rawFloor = item.floorInfo || "";
     let fFloor = "";
     let tFloor = "";
@@ -219,7 +231,7 @@ export default function Admin() {
         fFloor = parts[0].replace("Yükleme: ", "");
         tFloor = parts[1].replace("Boşaltma: ", "");
     } else {
-        fFloor = rawFloor; // Eski kayıtlar bozulmasın diye
+        fFloor = rawFloor;
     }
 
     setFormData({
@@ -232,10 +244,11 @@ export default function Admin() {
       toCity: item.toCity || "",
       toDistrict: item.toDistrict || "",
       toNeighborhood: item.toNeighborhood || "",
-      description: textPart, 
+      description: textPart.trim(), 
       moveDate: datePart,
       fromFloor: fFloor,
-      toFloor: tFloor
+      toFloor: tFloor,
+      price: pricePart // Fiyat kutusuna geri getir
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -244,7 +257,7 @@ export default function Admin() {
     setFormData({
       id: "", fullName: "", phoneNumber: "", fromCity: "", fromDistrict: "",
       fromNeighborhood: "", toCity: "", toDistrict: "", toNeighborhood: "",
-      floorInfo: "", description: "", moveDate: "", fromFloor: "", toFloor: ""
+      floorInfo: "", description: "", moveDate: "", fromFloor: "", toFloor: "", price: ""
     });
   };
 
@@ -260,7 +273,7 @@ export default function Admin() {
   return (
     <>
       <style>{`
-        :root { --lacivert: #0a1a2f; --kirmizi: #d90429; --altin: #ffb703; --acik-gri: #f4f6f9; --beyaz: #ffffff; }
+        :root { --lacivert: #0a1a2f; --kirmizi: #d90429; --altin: #ffb703; --acik-gri: #f4f6f9; --beyaz: #ffffff; --yesil: #28a745; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: var(--acik-gri); }
         
         #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--lacivert), #162a47); display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 9999; }
@@ -295,6 +308,7 @@ export default function Admin() {
         li { background: var(--beyaz); margin: 20px 0; padding: 25px; border-radius: 15px; border-left: 6px solid var(--altin); box-shadow: 0 5px 20px rgba(0,0,0,0.06); }
         .badge { background: linear-gradient(to right, var(--lacivert), #1e3a5f); color: var(--beyaz); padding: 5px 12px; border-radius: 20px; font-size: 0.85em; font-weight: bold; margin-right: 8px; border: 1px solid var(--altin); display: inline-block; margin-top: 5px;}
         .badge-date { background: linear-gradient(to right, #d90429, #b0021e); color: white; border: 1px solid #fff; }
+        .badge-price { background: linear-gradient(to right, #28a745, #1e7e34); color: white; border: 1px solid #fff; }
       `}</style>
 
       {!isLoggedIn ? (
@@ -377,16 +391,21 @@ export default function Admin() {
 
                 <button className="btn-map" onClick={rotayiGoster}><i className="fa-solid fa-map-location-dot"></i> ROTAYI & MESAFEYİ GÖR</button>
 
-                <div className="section-header"><i className="fa-solid fa-box-open"></i> Eşya, Tarih & Detaylar</div>
+                <div className="section-header"><i className="fa-solid fa-money-bill-wave"></i> Fiyat & Eşya Detayları</div>
                 <div className="row">
+                    <div className="col">
+                        <label style={{color: 'var(--yesil)'}}>Taşıma Ücreti (TL)</label>
+                        <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Örn: 15000" />
+                    </div>
                     <div className="col">
                         <label style={{color: 'var(--kirmizi)'}}>Taşınma Tarihi</label>
                         <input type="date" name="moveDate" value={formData.moveDate} onChange={handleChange} />
                     </div>
+                </div>
+                <div className="row">
                     <div className="col"><label>Eşya Tipi</label><input type="text" name="description" value={formData.description} onChange={handleChange} placeholder="Eşya Tipi (Örn: 2+1)" /></div>
                 </div>
                 
-                {/* YENİ EKLENEN 2 AYRI KAT KUTUSU */}
                 <div className="row">
                     <div className="col"><label>Yükleme Katı</label><input type="text" name="fromFloor" value={formData.fromFloor} onChange={handleChange} placeholder="Kaçıncı Kat? (Örn: 3)" /></div>
                     <div className="col"><label>Boşaltma Katı</label><input type="text" name="toFloor" value={formData.toFloor} onChange={handleChange} placeholder="Kaçıncı Kat? (Örn: 5)" /></div>
@@ -408,21 +427,32 @@ export default function Admin() {
                 <h3 style={{marginTop:'40px', borderBottom:'1px solid #ddd', paddingBottom:'10px', color: 'var(--lacivert)'}}><i className="fa-solid fa-list-check"></i> Son Eklenen Kayıtlar</h3>
                 
                 <ul>
-                    {quotes.map(item => {
-                        // LİSTEDE GÖSTERİRKEN TARİH VE KATLARI AYIKLAMA
+                    {[...quotes].reverse().map(item => {
                         let displayDate = "";
+                        let displayPrice = "";
                         let displayDesc = item.description || "";
+
+                        // Fiyatı ayıkla
+                        if (displayDesc.includes("[FİYAT: ")) {
+                            const pParts = displayDesc.split("[FİYAT: ");
+                            displayPrice = pParts[1].replace(" TL]", "");
+                            displayDesc = pParts[0];
+                        }
+
+                        // Tarihi ayıkla
                         if (displayDesc.includes(" || ") && displayDesc.startsWith("📅 ")) {
                              const parts = displayDesc.split(" || ");
                              displayDate = parts[0].replace("📅 ", "");
                              displayDesc = parts[1];
                         }
+
                         return (
                         <li key={item.id}>
                             <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start'}}>
                                 <div style={{flex:1}}>
-                                    <div style={{display:'flex', alignItems:'center', gap:'10px'}}>
+                                    <div style={{display:'flex', alignItems:'center', gap:'10px', flexWrap:'wrap'}}>
                                         <span style={{fontWeight:'bold', fontSize:'1.2em', color: 'var(--lacivert)'}}><i className="fa-solid fa-user-tag"></i> {item.fullName}</span>
+                                        {displayPrice && <span className="badge badge-price"><i className="fa-solid fa-money-bill-wave"></i> {displayPrice} TL</span>}
                                         {displayDate && <span className="badge badge-date"><i className="fa-solid fa-calendar-days"></i> {displayDate}</span>}
                                     </div>
                                     <span style={{color: 'var(--kirmizi)', fontWeight:'700', display:'block', marginTop:'5px'}}><i className="fa-solid fa-phone"></i> {item.phoneNumber}</span>
