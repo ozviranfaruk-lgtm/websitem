@@ -20,7 +20,7 @@ function Home() {
 
       <Hero />
 
-      {/* 📸 İCRAAT GALERİSİ (FOTOĞRAFLAR) */}
+      {/* 📸 İCRAAT GALERİSİ (7 FOTOĞRAF) */}
       <section style={{ padding: '60px 20px', maxWidth: '1300px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#0a1a2f' }}>
@@ -32,34 +32,52 @@ function Home() {
 
         <div style={gridStyle}>
           
-          {/* FOTO 1: AMBALAJ */}
+          {/* FOTO 1 */}
           <div style={mediaCardStyle}>
-            <img src="/assets/galeri/foto1.jpg" alt="Profesyonel Paketleme" style={mediaStyle} />
+            <img src="/assets/galeri/foto1.jpg" alt="Ambalaj" style={mediaStyle} />
             <div style={captionStyle}>Hassas Mobilya Ambalajı</div>
           </div>
 
-          {/* FOTO 2: İSTİF */}
+          {/* FOTO 2 */}
           <div style={mediaCardStyle}>
-            <img src="/assets/galeri/foto2.jpg" alt="Kamyon İçi Düzen" style={mediaStyle} />
+            <img src="/assets/galeri/foto2.jpg" alt="Kamyon İçi" style={mediaStyle} />
             <div style={captionStyle}>Sarsılmaz İstifleme Düzeni</div>
           </div>
 
-          {/* FOTO 3: ASANSÖR */}
+          {/* FOTO 3 */}
           <div style={mediaCardStyle}>
-            <img src="/assets/galeri/foto3.jpg" alt="Dış Cephe Asansörü" style={mediaStyle} />
+            <img src="/assets/galeri/foto3.jpg" alt="Asansör" style={mediaStyle} />
             <div style={captionStyle}>Yüksek Katlara Asansörlü Çözüm</div>
           </div>
 
-          {/* FOTO 4: TAŞIMA ANI */}
+          {/* FOTO 4 */}
           <div style={mediaCardStyle}>
-            <img src="/assets/galeri/foto4.jpg" alt="Güvenli Taşıma" style={mediaStyle} />
-            <div style={captionStyle}>Hızlı ve Güvenli Nakliye</div>
+            <img src="/assets/galeri/foto4.jpg" alt="Taşıma" style={mediaStyle} />
+            <div style={captionStyle}>Güvenli Nakliye Standartları</div>
+          </div>
+
+          {/* FOTO 5 */}
+          <div style={mediaCardStyle}>
+            <img src="/assets/galeri/foto5.jpg" alt="Ekipman" style={mediaStyle} />
+            <div style={captionStyle}>Profesyonel Ekip ve Ekipman</div>
+          </div>
+
+          {/* FOTO 6 */}
+          <div style={mediaCardStyle}>
+            <img src="/assets/galeri/foto6.jpg" alt="Hizmet" style={mediaStyle} />
+            <div style={captionStyle}>Sigortalı Taşımacılık</div>
+          </div>
+
+          {/* FOTO 7 */}
+          <div style={mediaCardStyle}>
+            <img src="/assets/galeri/foto7.jpg" alt="Paketleme Detay" style={mediaStyle} />
+            <div style={captionStyle}>Tam Korumalı Eşya Hazırlığı</div>
           </div>
 
         </div>
       </section>
 
-      {/* 🚚 SEO AÇIKLAMALARI */}
+      {/* 🚚 SEO BÖLÜMÜ */}
       <div style={{ padding: '80px 20px', maxWidth: '1200px', margin: '0 auto', background: '#f8f9fa', borderRadius: '20px' }}>
         <div style={{ display: 'flex', gap: '50px', alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ flex: '1', minWidth: '300px' }}>
