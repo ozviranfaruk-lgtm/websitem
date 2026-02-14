@@ -35,46 +35,46 @@ function Home() {
           {/* 1. SIRA: AMBALAJ VİDEOLARI */}
           <div style={mediaCardStyle}>
             <video width="100%" controls muted loop style={mediaStyle}>
-              {/* Dosya adı ekran görüntüsündeki gibi */}
-              <source src="/assets/galeri/kırmızı ambalaj.mp4" type="video/mp4" />
+              {/* Eski kırmızı ambalaj */}
+              <source src="/assets/galeri/video1.mp4" type="video/mp4" />
             </video>
             <div style={captionStyle}>Hassas Mobilya Ambalajı (Bordo)</div>
           </div>
 
           <div style={mediaCardStyle}>
             <video width="100%" controls muted loop style={mediaStyle}>
-              <source src="/assets/galeri/mavi ambalaj.mp4" type="video/mp4" />
+              {/* Eski mavi ambalaj */}
+              <source src="/assets/galeri/video2.mp4" type="video/mp4" />
             </video>
             <div style={captionStyle}>Tam Korumalı Eşya Hazırlığı (Mavi)</div>
           </div>
 
-          {/* 2. SIRA: FOTOĞRAFLAR (YATAK VE ASANSÖR FOTOSU) */}
+          {/* 2. SIRA: FOTOĞRAFLAR (YATAK VE ASANSÖR) */}
           <div style={mediaCardStyle}>
-            {/* DİKKAT: Dosya ismin 'kamyon arkasın...' diye görünüyor, tam ismini buraya yazdım. 
-                Eğer çalışmazsa dosya adını 'yatak.jpg' yapıp burayı düzeltiriz. */}
-            <img src="/assets/galeri/kamyon arkası.jpg" alt="Ambalajlı Yatak" style={mediaStyle} />
+            {/* Eski kamyon arkası... */}
+            <img src="/assets/galeri/foto1.jpg" alt="Ambalajlı Yatak" style={mediaStyle} />
             <div style={captionStyle}>Hijyenik Ambalaj Standartları</div>
           </div>
 
            <div style={mediaCardStyle}>
-             {/* Ekran görüntüsünde 'kurmalı asansör...' diye bir resim gördüm, onu ekledim */}
-            <img src="/assets/galeri/kurmalı asansör.jpg" alt="Kurmalı Asansör" style={mediaStyle} />
+             {/* Eski kurmalı asansör... */}
+            <img src="/assets/galeri/foto2.jpg" alt="Kurmalı Asansör" style={mediaStyle} />
             <div style={captionStyle}>Profesyonel Kurulum</div>
           </div>
 
           {/* 3. SIRA: ASANSÖR VİDEOLARI */}
           <div style={mediaCardStyle}>
             <video width="100%" controls muted loop style={mediaStyle}>
-              {/* Ekran görüntüsündeki isim: asansörlü taşıma.mp4 */}
-              <source src="/assets/galeri/asansörlü taşıma.mp4" type="video/mp4" />
+              {/* Eski asansörlü taşıma */}
+              <source src="/assets/galeri/video3.mp4" type="video/mp4" />
             </video>
             <div style={captionStyle}>Dış Cephe Asansör Kurulumu</div>
           </div>
 
           <div style={mediaCardStyle}>
             <video width="100%" controls muted loop style={mediaStyle}>
-              {/* DİKKAT: Ekran görüntüsünde sonda boşluk var: 'çaylı .mp4' */}
-              <source src="/assets/galeri/çaylı .mp4" type="video/mp4" />
+              {/* Eski çaylı .mp4 */}
+              <source src="/assets/galeri/video4.mp4" type="video/mp4" />
             </video>
             <div style={captionStyle}>Güvenli Balkon Kurulumu & Keyif Çayı</div>
           </div>
