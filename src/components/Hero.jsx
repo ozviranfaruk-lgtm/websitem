@@ -40,7 +40,14 @@ function Hero() {
 
     emailjs.sendForm('service_q9ei8t8', 'template_d1ds2eb', form.current, { publicKey: 'Kb7IHYqjxFURFSYfE' })
       .then(() => {
-          Swal.fire({ title: 'Harika!', text: 'Teklifiniz başarıyla alındı!', icon: 'success', confirmButtonColor: '#ffb703' });
+          // Hero.jsx içindeki sendQuote fonksiyonunun sonu:
+Swal.fire({ 
+  title: 'Talebiniz Alındı!', 
+  text: 'Teklif talebiniz başarıyla bize ulaştı. En kısa sürede yetkililerimiz kontrolleri sağlayıp size geri dönüş yapacaktır.', 
+  icon: 'success', 
+  confirmButtonColor: '#ffb703',
+  confirmButtonText: 'Tamam'
+});
           setFormData({ user_name: "", user_phone: "", fromCity: "", fromDistrict: "", toCity: "", toDistrict: "", from_floor: "", to_floor: "", room_type: "1+1" });
       });
   };
