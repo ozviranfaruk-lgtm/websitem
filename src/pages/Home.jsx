@@ -2,7 +2,6 @@ import React from 'react';
 import Hero from '../components/Hero'; 
 
 function Home() {
-  // Senin gerçek numaran - Şimdilik kurumsal hattımız bu
   const telNo = "05522820686"; 
   const telGosterim = "0552 282 06 86";
 
@@ -47,7 +46,7 @@ function Home() {
 
       <Hero />
 
-      {/* 📦 PROFESYONEL AMBALAJLAMA BÖLÜMÜ */}
+      {/* 📦 PROFESYONEL HİZMETLER BÖLÜMÜ */}
       <div style={{ padding: '70px 20px', textAlign: 'center', background: '#f8f9fa' }}>
         <h2 style={{ color: '#0a1a2f', fontSize: '2.2rem', fontWeight: '900' }}>
           HER EŞYA BİZİM İÇİN <span style={{ color: '#d90429' }}>DEĞERLİDİR</span>
@@ -66,9 +65,9 @@ function Home() {
             <p style={{fontSize: '0.95rem', color: '#666'}}>Eşyalarınızın bina içi dar merdivenlerde zarar görmemesi için modüler asansör sistemleri kullanılır.</p>
           </div>
           <div style={serviceBox}>
-            <i className="fa-solid fa-file-shield" style={iconStyle}></i>
-            <h3 style={{fontSize: '1.2rem', color: '#0a1a2f'}}>Sigortalı Nakliyat</h3>
-            <p style={{fontSize: '0.95rem', color: '#666'}}>Yol boyunca oluşabilecek tüm risklere karşı eşyalarınız kurumsal nakliye kaskosu ile güvendedir.</p>
+            <i className="fa-solid fa-handshake-angle" style={iconStyle}></i>
+            <h3 style={{fontSize: '1.2rem', color: '#0a1a2f'}}>Kurumsal Güven</h3>
+            <p style={{fontSize: '0.95rem', color: '#666'}}>Yılların verdiği tecrübe ile eşyalarınız profesyonel ekibimiz tarafından sıfır riskle taşınır.</p>
           </div>
         </div>
       </div>
@@ -79,10 +78,10 @@ function Home() {
           <div style={{ flex: '1', minWidth: '300px' }}>
             <h2 style={{ color: '#0a1a2f', marginBottom: '20px' }}>Ankara'nın Güvenilir Nakliye Firması</h2>
             <p style={{ lineHeight: '1.8', color: '#444', fontSize: '1.1rem' }}>
-              <strong>Proflash Nakliyat</strong>, Ankara merkezli olarak kurulmuş olup, profesyonel evden eve taşımacılık hizmetlerini tüm Türkiye'ye yaymıştır. 
+              <strong>Proflash Nakliyat</strong>, Ankara merkezli olarak profesyonel evden eve taşımacılık hizmetlerini tüm Türkiye'ye sunar. 
               Deneyimli personelimiz, geniş araç filomuz ve modern taşıma ekipmanlarımızla taşınma sürecinizi bir yük olmaktan çıkarıyoruz. 
               Müşteri memnuniyeti odaklı çalışma prensibimizle, Ankara içi semt taşımacılığından, 81 ile şehirler arası sevkiyatlarımıza kadar 
-              her adımda şeffaf ve kaliteli hizmet sunuyoruz.
+              her adımda şeffaf ve kaliteli hizmet sağlıyoruz.
             </p>
           </div>
           <div style={{ 
@@ -98,7 +97,7 @@ function Home() {
             <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2.2', fontSize: '1.05rem' }}>
               <li><i className="fa-solid fa-circle-check" style={{color:'#ffb703', marginRight:'10px'}}></i> Ücretsiz Ekspertiz Hizmeti</li>
               <li><i className="fa-solid fa-circle-check" style={{color:'#ffb703', marginRight:'10px'}}></i> Profesyonel Marangoz Hizmeti</li>
-              <li><i className="fa-solid fa-circle-check" style={{color:'#ffb703', marginRight:'10px'}}></i> Sigortalı & Sözleşmeli Taşıma</li>
+              <li><i className="fa-solid fa-circle-check" style={{color:'#ffb703', marginRight:'10px'}}></i> Sabit Fiyat Garantisi</li>
               <li><i className="fa-solid fa-circle-check" style={{color:'#ffb703', marginRight:'10px'}}></i> 7/24 Kesintisiz İletişim</li>
               <li><i className="fa-solid fa-circle-check" style={{color:'#ffb703', marginRight:'10px'}}></i> Modern Asansörlü Araçlar</li>
             </ul>
@@ -129,16 +128,12 @@ function Home() {
         }}>
           <i className="fa-solid fa-phone-volume" style={{marginRight: '10px'}}></i> {telGosterim}
         </a>
-        <div style={{ marginTop: '25px', color: '#0a1a2f', fontWeight: 'bold', fontSize: '1.1rem' }}>
-          <i className="fa-solid fa-clock"></i> Zaman Kaybetmeyin, Hemen Arayın!
-        </div>
       </div>
 
     </div>
   );
 }
 
-// Stil Nesneleri
 const serviceBox = {
   background: 'white',
   padding: '40px 25px',
