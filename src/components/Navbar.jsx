@@ -28,7 +28,7 @@ function Navbar() {
           <img 
             src={LogoGorseli} 
             alt="Proflash Nakliyat" 
-            style={{ height: '170px', width: 'auto', display: 'block' }} 
+            style={{ height: '210px', width: 'auto', display: 'block' }} 
           />
         </Link>
 
