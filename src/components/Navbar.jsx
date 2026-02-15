@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// YENİ LOGOYU BURADA İÇERİ ALIYORUZ
+import LogoGorseli from '../assets/yeni-logo.png.jpg';
 
 function Navbar() {
   return (
     <>
-      {/* --- TELEFON VE BİLGİSAYAR İÇİN AKILLI CSS (SİHİRLİ KISIM BURASI) --- */}
       <style>
         {`
           .nav-container {
@@ -44,10 +45,9 @@ function Navbar() {
             display: inline-block;
           }
 
-          /* TELEFON EKRANLARI İÇİN ÖZEL GÖRÜNÜM */
           @media (max-width: 768px) {
             .nav-container {
-              flex-direction: column; /* Logoyu üste, menüyü alta alır */
+              flex-direction: column;
               gap: 15px;
               padding: 15px 10px;
             }
@@ -55,38 +55,26 @@ function Navbar() {
               width: 100%;
               justify-content: center;
               gap: 15px;
-              flex-wrap: wrap; /* Ekrana sığmazsa alt alta dizer */
+              flex-wrap: wrap;
             }
-            .nav-link {
-              font-size: 1rem;
-            }
-            .nav-btn {
-              padding: 8px 18px;
-              font-size: 0.95rem;
-            }
-            .logo-title {
-              font-size: 1.5rem !important; /* Logoyu telefonda biraz küçültür */
-            }
-            .kamyon-icon {
-              width: 40px !important;
-              height: 40px !important;
-              font-size: 1.5rem !important;
+            .site-logo {
+              height: 50px !important; /* Telefonda logoyu biraz küçültür */
             }
           }
         `}
       </style>
 
-      {/* --- GÖRÜNEN KISIM --- */}
-      <nav style={{ background: '#0a1a2f', padding: '15px 0', borderBottom: '4px solid #d90429', boxShadow: '0 4px 15px rgba(0,0,0,0.3)', position: 'sticky', top: 0, zIndex: 1000 }}>
+      <nav style={{ background: '#0a1a2f', padding: '10px 0', borderBottom: '4px solid #d90429', boxShadow: '0 4px 15px rgba(0,0,0,0.3)', position: 'sticky', top: 0, zIndex: 1000 }}>
         <div className="nav-container">
           
-          {/* LOGO ALANI */}
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <div className="kamyon-icon" style={{ fontSize: '2rem', color: '#ffb703', background: '#d90429', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: '3px solid white', boxShadow: '0 0 15px rgba(255, 183, 3, 0.6)' }}>🚚</div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <h1 className="logo-title" style={{ margin: 0, fontSize: '1.8rem', fontWeight: '900', color: 'white', letterSpacing: '1px', fontStyle: 'italic', textTransform: 'uppercase' }}>PROFLASH</h1>
-              <span style={{ color: '#ffb703', fontWeight: '600', fontSize: '0.75rem', letterSpacing: '3px', textTransform: 'uppercase', marginTop: '2px' }}>NAKLİYAT & LOJİSTİK</span>
-            </div>
+          {/* LOGO ALANI - ARTIK GERÇEK LOGO VAR */}
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <img 
+              src={LogoGorseli} 
+              alt="Proflash Nakliyat" 
+              className="site-logo"
+              style={{ height: '70px', width: 'auto', objectFit: 'contain' }} 
+            />
           </Link>
 
           {/* MENÜ ALANI */}
