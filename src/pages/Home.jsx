@@ -62,12 +62,6 @@ function Home() {
             <div style={captionStyle}>Profesyonel Ekip ve Ekipman</div>
           </div>
 
-          {/* FOTO 6 */}
-          <div style={mediaCardStyle}>
-            <img src="/assets/galeri/foto6.jpg" alt="Hizmet" style={mediaStyle} />
-            <div style={captionStyle}>Sigortalı Taşımacılık</div>
-          </div>
-
           {/* FOTO 7 */}
           <div style={mediaCardStyle}>
             <img src="/assets/galeri/foto7.jpg" alt="Paketleme Detay" style={mediaStyle} />
@@ -85,14 +79,14 @@ function Home() {
             <p style={{ lineHeight: '1.8', color: '#444', fontSize: '1.1rem' }}>
               <strong>Ankara evden eve nakliyat</strong> sektöründe, eşyalarınızı kendi eşyamız gibi benimsiyoruz. 
               Ambalaj kalitemizle hasarı sıfıra indirirken, asansörlü sistemimizle taşınma süresini kısaltıyoruz.
-              Şehir içi veya şehirler arası fark etmeksizin, <strong>sigortalı ve sözleşmeli</strong> taşımacılık hizmeti sunuyoruz.
+              Şehir içi veya şehirler arası fark etmeksizin, <strong></strong> taşımacılık hizmeti sunuyoruz.
             </p>
           </div>
           <div style={whyUsBox}>
             <ul style={listStyle}>
               <li><i className="fa-solid fa-check" style={checkStyle}></i> Ücretsiz Ekspertiz</li>
               <li><i className="fa-solid fa-check" style={checkStyle}></i> Asansörlü Taşıma</li>
-              <li><i className="fa-solid fa-check" style={checkStyle}></i> Sigortalı Nakliye</li>
+              <li><i className="fa-solid fa-check" style={checkStyle}></i> Güvenli Nakliye</li>
               <li><i className="fa-solid fa-check" style={checkStyle}></i> Uzman Marangoz</li>
             </ul>
           </div>
