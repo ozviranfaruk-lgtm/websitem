@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// ÖNEMLİ: assets klasöründeki şeffaf logonun adının logo-son.png olduğundan emin ol
+// Assets içine attığımız şeffaf logoyu çağırıyoruz
 import LogoGorseli from '../assets/logo-son.png';
 
 function Navbar() {
@@ -9,47 +9,43 @@ function Navbar() {
       background: '#0a1a2f', 
       padding: '5px 0', 
       borderBottom: '3px solid #d90429', 
-      boxShadow: '0 4px 15px rgba(0,0,0,0.3)', 
       position: 'sticky', 
       top: 0, 
-      zIndex: 1000 
+      zIndex: 1000,
+      boxShadow: '0 4px 15px rgba(0,0,0,0.3)'
     }}>
       <div style={{ 
         maxWidth: '1200px', 
         margin: '0 auto', 
         display: 'flex', 
-        justify-content: space-between, 
+        justifyContent: 'space-between', 
         alignItems: 'center', 
         padding: '0 20px' 
       }}>
         
-        {/* LOGO ALANI */}
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+        {/* LOGO ALANI - Şeffaf ve Profesyonel */}
+        <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
           <img 
             src={LogoGorseli} 
             alt="Proflash Nakliyat" 
-            style={{ 
-              height: '80px', // Logo boyutunu buradan ayarlayabilirsin
-              width: 'auto', 
-              display: 'block' 
-            }} 
+            style={{ height: '85px', width: 'auto', display: 'block' }} 
           />
         </Link>
 
-        {/* MENÜ ALANI */}
+        {/* MENÜ ALANI - Linkler ve Buton */}
         <div style={{ display: 'flex', gap: '25px', alignItems: 'center' }}>
           <Link to="/" style={{ 
             color: 'white', 
             textDecoration: 'none', 
             fontWeight: '600',
-            fontSize: '1.1rem' 
+            fontSize: '1.05rem' 
           }}>Ana Sayfa</Link>
           
           <Link to="/hizmetler" style={{ 
             color: 'white', 
             textDecoration: 'none', 
             fontWeight: '600',
-            fontSize: '1.1rem' 
+            fontSize: '1.05rem' 
           }}>Hizmetler</Link>
           
           <Link to="/iletisim" style={{ 
@@ -64,8 +60,8 @@ function Navbar() {
         </div>
 
       </div>
-      
-      {/* Mobilde düzgün görünmesi için küçük bir ayar */}
+
+      {/* MOBİL TASARIM AYARI */}
       <style>{`
         @media (max-width: 768px) {
           div[style*="justify-content: space-between"] {
