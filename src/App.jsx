@@ -30,6 +30,17 @@ function App() {
 
       {/* Alt Footer Her Sayfada Görünsün */}
       <Footer />
+
+      {/* WhatsApp Sabit Buton */}
+      <a 
+        href="https://wa.me/905522820686" 
+        className="whatsapp-buton" 
+        target="_blank" 
+        rel="noreferrer" 
+        title="WhatsApp'tan Bize Ulaşın"
+      >
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+      </a>
     </div>
   );
 }
