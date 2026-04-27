@@ -126,6 +126,7 @@ html, body {
   font-weight: 700;
   white-space: nowrap; /* Yazının bölünmesini engeller */
 }
+
 /* iPHONE ÖZEL: Otomatik yakınlaştırmayı ve taşmayı önler */
 input, select, textarea {
   font-size: 16px !important; /* iPhone'un zoom yapmasını engelleyen sihirli rakam */
@@ -141,4 +142,41 @@ html, body {
 #root {
   overflow-x: hidden !important;
   width: 100% !important;
+}
+
+/* --- WHATSAPP BUTON TASARIMI --- */
+.whatsapp-buton {
+  position: fixed;
+  bottom: 30px; 
+  right: 30px;  
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* Sayfadaki her şeyin üzerinde durması için */
+  transition: all 0.3s ease;
+}
+
+.whatsapp-buton img {
+  width: 35px;
+  height: 35px;
+}
+
+.whatsapp-buton:hover {
+  transform: scale(1.15); 
+  background-color: #128C7E; 
+}
+
+/* Mobilde butonun boyutunu ve konumunu ayarlar */
+@media (max-width: 768px) {
+  .whatsapp-buton {
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+  }
 }
